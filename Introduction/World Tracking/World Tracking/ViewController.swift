@@ -26,7 +26,9 @@ class ViewController: UIViewController {
         
         // make sure a soon the view loads it has this config, this able the device detecs orientation all time
         self.sceneView.session.run( configuration )
-    
+        
+        // this enables light reflection
+        self.sceneView.autoenablesDefaultLighting = true
     }
     
     
@@ -38,14 +40,23 @@ class ViewController: UIViewController {
         let node = SCNNode()
         
         // To let us see the node, let's create some shape
-        node.geometry = SCNBox( width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0 )
+        node.geometry = SCNBox( width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0.02 )
         
         // FirstMaterial defines the appearance of surface
+        
+        // Specular is the light that reflects of the susface
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        
         // Diffuse represents the color spread into the box
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
         
+        // lets just aadd random numbers
+        let x = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+        let y = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+        let z = randomNumbers(firstNum: -0.3, secondNum: 0.3)
+        
         // we need to specify the node's positon x( red ),y( green ),z( blue )
-        node.position = SCNVector3( 0, 0, -0.3 )
+        node.position = SCNVector3( x,y,z )
         
         
         //To add the node to the sceneView, the root node is inside the scene, adding an element as a child of root will always refer to the starting point
@@ -68,5 +79,9 @@ class ViewController: UIViewController {
         // forget old position and get a new one
         self.sceneView.session.run( configuration, options: [ .resetTracking, .removeExistingAnchors ] )
     }
-
+    
+    
+    func randomNumbers( firstNum: CGFloat, secondNum: CGFloat ) -> CGFloat {
+        return CGFloat( arc4random() ) / CGFloat( UINT32_MAX ) * ( firstNum - secondNum ) + min( firstNum, secondNum )
+    }
 }
