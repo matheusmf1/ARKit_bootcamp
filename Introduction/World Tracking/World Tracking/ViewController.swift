@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
         
         // we need to specify the node's positon x( red ),y( green ),z( blue )
-        node.position = SCNVector3( -0.3,-0.2,-0.5 )
+        node.position = SCNVector3( 0, 0, -0.3 )
         
         
         //To add the node to the sceneView, the root node is inside the scene, adding an element as a child of root will always refer to the starting point
@@ -54,6 +54,19 @@ class ViewController: UIViewController {
     }
     
 
+    @IBAction func reset(_ sender: Any) {
+        self.restartSession()
+    }
+    
+    
+    func restartSession() {
+         // first pause the session
+        self.sceneView.session.pause()
+        // remove the box from root node
+        self.sceneView.scene.rootNode.enumerateChildNodes { ( node, _ ) in node.removeFromParentNode() }
+        
+        // forget old position and get a new one
+        self.sceneView.session.run( configuration, options: [ .resetTracking, .removeExistingAnchors ] )
+    }
 
 }
-

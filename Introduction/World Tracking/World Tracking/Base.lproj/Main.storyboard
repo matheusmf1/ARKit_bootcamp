@@ -18,9 +18,23 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WW5-qh-Usb">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx9-Ii-D8F">
+                                <rect key="frame" x="290" y="790" width="80" height="60"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="R9Q-NQ-kYx"/>
+                                    <constraint firstAttribute="width" constant="80" id="zD7-ZT-LpQ"/>
+                                </constraints>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xSQ-xX-I7u"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La4-Ms-ThM">
-                                <rect key="frame" x="20" y="810" width="80" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="790" width="80" height="60"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="0nc-oN-MWi"/>
                                     <constraint firstAttribute="width" constant="50" id="64u-7E-9ry"/>
@@ -29,7 +43,9 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="ec4-fT-OuA"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="sDM-77-LJs"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="addBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pbD-pB-QyU"/>
                                 </connections>
@@ -39,10 +55,12 @@
                         <constraints>
                             <constraint firstItem="WW5-qh-Usb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0qw-Sm-FQu"/>
                             <constraint firstItem="WW5-qh-Usb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HUf-Zy-H7q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zx9-Ii-D8F" secondAttribute="bottom" constant="12" id="LvG-9V-jzS"/>
                             <constraint firstAttribute="bottom" secondItem="La4-Ms-ThM" secondAttribute="bottom" constant="20" id="Vcv-DS-Q4l"/>
                             <constraint firstItem="WW5-qh-Usb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VdN-8a-2nz"/>
                             <constraint firstItem="La4-Ms-ThM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="a4Z-LE-HCJ"/>
                             <constraint firstItem="WW5-qh-Usb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dAR-OD-uKo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zx9-Ii-D8F" secondAttribute="trailing" constant="44" id="kai-ru-Z9e"/>
                             <constraint firstAttribute="bottom" secondItem="WW5-qh-Usb" secondAttribute="bottom" id="vSV-WY-wX5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
