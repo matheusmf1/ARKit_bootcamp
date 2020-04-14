@@ -64,7 +64,139 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func addCap(_ sender: Any) {
+        let node = SCNNode()
+               
+       node.geometry = SCNCapsule( capRadius: 0.1, height: 0.3 )
 
+       node.geometry?.firstMaterial?.specular.contents = UIColor.white
+       node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+       
+       node.position = SCNVector3( 0, 0, 0 )
+
+       self.sceneView.scene.rootNode.addChildNode( node )
+        
+    }
+        
+    
+    @IBAction func addCone(_ sender: Any) {
+        
+        let node = SCNNode()
+              
+        node.geometry = SCNCone( topRadius: 0, bottomRadius: 0.1, height: 0.1 )
+
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+      
+        node.position = SCNVector3( 0, 0, 0 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+
+    }
+    
+    
+    @IBAction func addCylinder(_ sender: Any) {
+        
+      let node = SCNNode()
+                     
+     node.geometry = SCNCylinder( radius: 0.02, height: 0.04 )
+     
+     node.geometry?.firstMaterial?.specular.contents = UIColor.white
+     node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+     node.position = SCNVector3( 0, 0, 0 )
+
+     self.sceneView.scene.rootNode.addChildNode( node )
+        
+    }
+
+    
+    
+    @IBAction func addSphere(_ sender: Any) {
+        let node = SCNNode()
+                
+        node.geometry = SCNSphere( radius: 0.02 )
+        
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+        node.position = SCNVector3( 0, 0, 0 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+    }
+    
+    
+    
+    @IBAction func addTube(_ sender: Any) {
+            
+        let node = SCNNode()
+                
+        node.geometry = SCNTube( innerRadius: 0.02, outerRadius: 0.03, height: 0.05 )
+        
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+        node.position = SCNVector3( 0, 0, 0 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+        
+    }
+    
+    @IBAction func addRing(_ sender: Any) {
+        let node = SCNNode()
+               
+        node.geometry = SCNTorus( ringRadius: 0.3, pipeRadius: 0.1 )
+
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+        node.position = SCNVector3( 0, 0, -0.7 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+        
+    }
+    
+    @IBAction func addPlane(_ sender: Any) {
+        let node = SCNNode()
+               
+        // A Plane there is no depth
+        node.geometry = SCNPlane( width: 0.2, height: 0.2 )
+
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+        node.position = SCNVector3( 0, 0, 0 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+        
+    }
+    
+    @IBAction func addBazier(_ sender: Any) {
+        
+        //here we are drawing a line
+        let node = SCNNode()
+               
+        let path = UIBezierPath()
+        
+        path.move( to: CGPoint( x: 0, y: 0 ) )
+        path.addLine( to: CGPoint( x: 0, y: 0.2 ) )
+        path.addLine( to: CGPoint( x: 0.2, y: 0.3 ) )
+        path.addLine( to: CGPoint( x: 0.4, y: 0.2 ) )
+        path.addLine( to: CGPoint( x: 0.4, y: 0 ) )
+        
+        let shape = SCNShape( path: path, extrusionDepth: 0.2 )
+        node.geometry = shape
+        
+        node.geometry?.firstMaterial?.specular.contents = UIColor.white
+        node.geometry?.firstMaterial?.diffuse.contents = UIColor.lightGray
+
+        node.position = SCNVector3( 0, 0, -0.7 )
+
+        self.sceneView.scene.rootNode.addChildNode( node )
+    }
+    
+    
+    
     @IBAction func reset(_ sender: Any) {
         self.restartSession()
     }
